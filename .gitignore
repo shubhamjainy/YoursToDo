@@ -10,3 +10,10 @@
 /YoursToDo.WinUI/bin/x64/Debug/net6.0-windows10.0.19041.0/win10-x64
 /YoursToDo.WinUI/obj
 /YoursToDo.WinUI/bin/x64/Debug/net6.0-windows10.0.19041.0
+/YoursToDo/bin/Debug
+/YoursToDo/Properties/PublishProfiles
+/YoursToDo/YoursToDo.csproj.user
+/YoursToDo.Common/bin/Release/net6.0
+/YoursToDo.WinUI/bin
+/YoursToDo.WinUI/BundleArtifacts
+/YoursToDo.WinUI/Properties/PublishProfiles
