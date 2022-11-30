@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/YoursToDo/obj
+/YoursToDo/bin/Debug/net7.0-windows
+/.vs
+/YoursToDo.Common/obj
+/YoursToDo.Common/bin/Debug
+/YoursToDo.WinUI/bin/x64/Debug/net6.0-windows10.0.19041.0/win10-x64
+/YoursToDo.WinUI/obj

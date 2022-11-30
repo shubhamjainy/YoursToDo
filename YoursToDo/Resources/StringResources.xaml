@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:system="clr-namespace:System;assembly=netstandard">
+
+    <system:String x:Key="CreateAccount">Create Account</system:String>
+    <system:String x:Key="DoYouAlreadyHaveAnAccount">Do you already have an account?</system:String>
+    <system:String x:Key="DontHaveAnAccount">Dont have an account?</system:String>
+    <system:String x:Key="Login">Login</system:String>
+    <system:String x:Key="Name">Name</system:String>
+    <system:String x:Key="Email">Email</system:String>
+    <system:String x:Key="Password">Password</system:String>
+    <system:String x:Key="ConfirmPassword">Confirm Password</system:String>
+
+</ResourceDictionary>

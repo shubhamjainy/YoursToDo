@@ -1,0 +1,26 @@
+﻿<Window x:Class="YoursToDo.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YoursToDo" 
+        xmlns:viewmodels="clr-namespace:YoursToDo.ViewModels"
+        mc:Ignorable="d"   
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="YourToDo" Height="450" Width="800" Name="Main" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/Images/todo.png" />
+        <Grid  Grid.Row="1">
+            <WrapPanel  HorizontalAlignment="Center">
+                <TextBlock Text="{StaticResource DoYouAlreadyHaveAnAccount}" FontSize="18" />
+                <Button Content="{StaticResource Login}" Padding="10,0" FontSize="18" Command="{Binding LoginCommand}" Style="{StaticResource linkButtonStyle}" Cursor="Hand" Margin="10,0"/>
+            </WrapPanel>
+            <Button HorizontalAlignment="Center" FontSize="{StaticResource fontSizeNormal}" VerticalAlignment="Bottom" Content="{StaticResource CreateAccount}" Command="{Binding CreateAccountCommand}" Margin="0,0,0,10"/>
+        </Grid>
+    </Grid>
+</Window>
