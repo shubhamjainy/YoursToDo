@@ -41,10 +41,12 @@ namespace YoursToDo.WinUI
                 new ServiceCollection()
                 .AddSingleton<IDataService<User>, DataService<User>>()
                 .AddSingleton<IUserService, UserService>()
+                .AddSingleton<IItemService, ItemService>()
                 .AddSingleton<IWindowFactory, WindowFactory>()
                 .AddTransient<MainWindowViewModel>()
                 .AddTransient<LoginViewModel>()
                 .AddTransient<CreateAccountViewModel>()
+                .AddTransient<DashboardViewModel>()
                 .BuildServiceProvider());
 
             // this is for demo purposes only, to make it easier

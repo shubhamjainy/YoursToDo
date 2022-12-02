@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using System.ComponentModel.DataAnnotations;
@@ -8,8 +7,8 @@ using System.Windows;
 using YoursToDo.Common;
 using YoursToDo.Common.Enums;
 using YoursToDo.Common.Interface;
+using YoursToDo.Common.Manager;
 using YoursToDo.Common.NotificationMessages;
-using YoursToDo.Helper;
 
 namespace YoursToDo.ViewModels
 {
@@ -30,6 +29,8 @@ namespace YoursToDo.ViewModels
 
             if (result is not null && result.Password.Equals(Password))
             {
+                var userManager = UserManager.Instance;
+                userManager.SetUserData(result.Name, result.Email, result.Id);
                 Factory.ShowDashboardWindow();
                 WeakReferenceMessenger.Default.Send(new ClosingNotificationMessage(WindowType.Login));
             }

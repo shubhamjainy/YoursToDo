@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace YoursToDo.Common.Interface
+﻿namespace YoursToDo.Common.Interface
 {
     public interface IDataService<T>
     {

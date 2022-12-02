@@ -9,6 +9,7 @@
     xmlns:collections="using:System.Collections">
     
     <x:Double x:Key="fontSizeNormal">18</x:Double>
+    <x:Double x:Key="smallSizeNormal">12</x:Double>
 
     <Style x:Key="buttonStyle" TargetType="Button">
         <Setter Property="Background" Value="#29abe1" />

@@ -39,9 +39,9 @@ namespace YoursToDo.ViewModels
         [RelayCommand(CanExecute = nameof(CanLoginExecute))]
         private async Task CreateAccountAsync()
         {
-            var getUser = await UserService.Get(email);
+            var getUser = await UserService.Exists(email);
 
-            if (getUser is not null)
+            if (getUser)
             {
                 MessageBox.Show(Constant.AccountAlreadyExists);
                 return;
@@ -57,6 +57,7 @@ namespace YoursToDo.ViewModels
             if (result is not null)
             {
                 MessageBox.Show(Constant.AccountCreationSuccessful);
+                Login();
             }
         }
 

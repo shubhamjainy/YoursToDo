@@ -3,7 +3,8 @@
                     xmlns:sys="clr-namespace:System;assembly=netstandard">
 
     <sys:Double x:Key="fontSizeNormal">18</sys:Double>
-    
+    <sys:Double x:Key="smallSizeNormal">12</sys:Double>
+
     <Style x:Key="linkButtonStyle" TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>

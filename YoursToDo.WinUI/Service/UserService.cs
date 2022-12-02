@@ -13,5 +13,8 @@ namespace YoursToDo.WinUI.Service
         public UserService() => context = App._context;
         public async Task<User> Get(string email) => (await context.Set<User>()
                 .SingleOrDefaultAsync(user => user.Email == email))!;
+
+        public async Task<bool> Exists(string email) => (await context.Set<User>()
+              .AnyAsync(user => user.Email == email))!;
     }
 }

@@ -49,9 +49,9 @@ namespace YoursToDo.WinUI.ViewModels
         [RelayCommand(CanExecute = nameof(CanLoginExecute))]
         private async Task CreateAccountAsync()
         {
-            var getUser = await UserService.Get(email);
+            var getUser = await UserService.Exists(email);
 
-            if (getUser is not null)
+            if (getUser)
             {
                 WeakReferenceMessenger.Default.Send(new DialogNotificationMessage(Constant.AccountAlreadyExists));
 
@@ -68,6 +68,7 @@ namespace YoursToDo.WinUI.ViewModels
             if (result is not null)
             {
                 WeakReferenceMessenger.Default.Send(new DialogNotificationMessage(Constant.AccountCreationSuccessful, "Success"));
+                Login();
             }
         }
 

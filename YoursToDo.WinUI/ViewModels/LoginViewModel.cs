@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using YoursToDo.Common;
 using YoursToDo.Common.Enums;
 using YoursToDo.Common.Interface;
+using YoursToDo.Common.Manager;
 using YoursToDo.Common.NotificationMessages;
 
 namespace YoursToDo.WinUI.ViewModels
@@ -28,6 +29,9 @@ namespace YoursToDo.WinUI.ViewModels
 
             if (result is not null && result.Password.Equals(Password))
             {
+                var userManager = UserManager.Instance;
+                userManager.SetUserData(result.Name, result.Email, result.Id);
+
                 Factory.ShowDashboardWindow();
                 WeakReferenceMessenger.Default.Send(new ClosingNotificationMessage(WindowType.Login));
             }

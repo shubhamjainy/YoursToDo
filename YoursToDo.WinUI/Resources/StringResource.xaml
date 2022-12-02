@@ -13,5 +13,10 @@
     <x:String x:Key="Email">Email</x:String>
     <x:String x:Key="Password">Password</x:String>
     <x:String x:Key="ConfirmPassword">Confirm Password</x:String>
-
+    <x:String x:Key="Add">Add</x:String>
+    <x:String x:Key="Edit">Edit</x:String>
+    <x:String x:Key="Delete">Delete</x:String>
+    <x:String x:Key="EnterNewToDoItem">Enter a new ToDo item</x:String>
+    <x:String x:Key="LogOut">LogOut</x:String>
+    <x:String x:Key="ToDoItems">ToDo items:</x:String>
 </ResourceDictionary>

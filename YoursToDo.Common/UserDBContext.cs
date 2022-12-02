@@ -7,6 +7,7 @@ namespace YoursToDo.Common
     public class UserDBContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Item> Items { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
@@ -17,6 +18,7 @@ namespace YoursToDo.Common
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new ItemConfiguration());
         }
     }
 }
