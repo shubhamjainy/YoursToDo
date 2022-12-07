@@ -12,8 +12,10 @@
     <system:String x:Key="ConfirmPassword">Confirm Password</system:String>
     <system:String x:Key="Add">Add</system:String>
     <system:String x:Key="Edit">Edit</system:String>
+    <system:String x:Key="Cancel">Cancel</system:String>
     <system:String x:Key="Delete">Delete</system:String>
     <system:String x:Key="EnterNewToDoItem">Enter a new ToDo item</system:String>
+    <system:String x:Key="UpdateToDoItem">Update ToDo item</system:String>
     <system:String x:Key="LogOut">LogOut</system:String>
     <system:String x:Key="ToDoItems">ToDo items:</system:String>
 </ResourceDictionary>

@@ -7,14 +7,14 @@ using YoursToDo.ViewModels;
 namespace YoursToDo.Views
 {
     /// <summary>
-    /// Interaction logic for CreateAccountView.xaml
+    /// Interaction logic for EditItemView.xaml
     /// </summary>
-    public partial class CreateAccountView : Window
+    public partial class EditItemView : Window
     {
-        public CreateAccountView()
+        public EditItemView()
         {
             InitializeComponent();
-            this.DataContext = Ioc.Default.GetService<CreateAccountViewModel>();
+            this.DataContext = Ioc.Default.GetService<EditItemViewModel>();
 
             WeakReferenceMessenger.Default.Register<ClosingNotificationMessage>(this, (recipient, message) =>
             {

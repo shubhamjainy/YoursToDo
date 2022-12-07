@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using YoursToDo.Common.Models;
+using YoursToDo.Common.Entity;
 
 namespace YoursToDo.Common.Entity_Configuration
 {

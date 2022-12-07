@@ -1,16 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-using YoursToDo.Common;
+using YoursToDo.Common.Entity;
 using YoursToDo.Common.Interface;
-using YoursToDo.Common.Models;
 
-namespace YoursToDo.Service
+namespace YoursToDo.Common.Service
 {
-    internal sealed class UserService : DataService<User>, IUserService
+    public sealed class UserService : DataService<User>, IUserService
     {
-        UserDBContext context;
+        private readonly UserDBContext context;
 
-        public UserService() => context = App._context;
+        public UserService(UserDBContext _context) : base(_context) => context = _context;
+
         public async Task<User> Get(string email) => (await context.Set<User>()
                 .SingleOrDefaultAsync(user => user.Email == email))!;
 

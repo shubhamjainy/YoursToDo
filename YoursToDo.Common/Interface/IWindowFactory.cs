@@ -6,5 +6,6 @@
         void ShowMainWindow();
         void ShowLoginWindow();
         void ShowCreateAccountWindow();
+        bool? ShowEditItemWindow();
     }
 }

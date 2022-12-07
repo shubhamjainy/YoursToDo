@@ -2,15 +2,14 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using CommunityToolkit.Mvvm.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
-using WinUIEx;
 using YoursToDo.Common;
+using YoursToDo.Common.Entity;
 using YoursToDo.Common.Interface;
-using YoursToDo.Common.Models;
+using YoursToDo.Common.Manager;
+using YoursToDo.Common.Service;
 using YoursToDo.WinUI.Helper;
-using YoursToDo.WinUI.Service;
 using YoursToDo.WinUI.ViewModels;
 using YoursToDo.WinUI.Views;
 using Window = Microsoft.UI.Xaml.Window;
@@ -25,9 +24,6 @@ namespace YoursToDo.WinUI
     /// </summary>
     public partial class App : Application
     {
-        public static UserDBContext _context =
-            new();
-
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -38,23 +34,18 @@ namespace YoursToDo.WinUI
 
             // Register services
             Ioc.Default.ConfigureServices(
-                new ServiceCollection()
-                .AddSingleton<IDataService<User>, DataService<User>>()
-                .AddSingleton<IUserService, UserService>()
-                .AddSingleton<IItemService, ItemService>()
-                .AddSingleton<IWindowFactory, WindowFactory>()
-                .AddTransient<MainWindowViewModel>()
-                .AddTransient<LoginViewModel>()
-                .AddTransient<CreateAccountViewModel>()
-                .AddTransient<DashboardViewModel>()
-                .BuildServiceProvider());
-
-            // this is for demo purposes only, to make it easier
-            // to get up and running
-            _context.Database.EnsureCreated();
-
-            // load the entities into EF Core
-            _context.Users.Load();
+               new ServiceCollection()
+               .AddSingleton<IDataService<User>, DataService<User>>()
+               .AddSingleton<IUserService, UserService>()
+               .AddSingleton<IItemService, ItemService>()
+               .AddSingleton<IWindowFactory, WindowFactory>()
+               .AddSingleton<IUserManager, UserManager>()
+               .AddTransient<MainWindowViewModel>()
+               .AddTransient<LoginViewModel>()
+               .AddTransient<CreateAccountViewModel>()
+               .AddTransient<DashboardViewModel>()
+               .AddDbContext<UserDBContext>()
+               .BuildServiceProvider());
         }
 
         /// <summary>

@@ -1,38 +1,25 @@
-﻿namespace YoursToDo.Common.Manager
+﻿using YoursToDo.Common.Entity;
+using YoursToDo.Common.Interface;
+
+namespace YoursToDo.Common.Manager
 {
-    public sealed class UserManager
+    public sealed class UserManager : IUserManager
     {
-        private static UserManager? instance;
-        private static readonly object lockObj = new();
-
-        public string Name { get; private set; }
-        public string Email { get; private set; }
-        public int UserId { get; private set; }
-
-        public static UserManager Instance
-        {
-            get
-            {
-                lock (lockObj)
-                {
-                    if (instance is null)
-                    {
-                        instance = new UserManager();
-                    }
-                    return instance;
-                }
-            }
-        }
-        private UserManager()
-        {
-
-        }
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public int UserId { get; set; }
+        public Item? SelectedItem { get; set; }
 
         public void SetUserData(string userName, string email, int userId)
         {
             this.Name = userName;
             this.Email = email;
             this.UserId = userId;
+        }
+
+        public void SetSelectedToDoItem(Item selectedItem)
+        {
+            this.SelectedItem = selectedItem;
         }
     }
 }

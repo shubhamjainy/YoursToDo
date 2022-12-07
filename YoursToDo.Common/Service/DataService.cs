@@ -1,17 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using YoursToDo.Common;
 using YoursToDo.Common.Interface;
 
-namespace YoursToDo.WinUI.Service
+namespace YoursToDo.Common.Service
 {
-    internal class DataService<T> : IDataService<T> where T : class
+    public class DataService<T> : IDataService<T> where T : class
     {
-       private readonly UserDBContext context;
+        private readonly UserDBContext context;
 
-        public DataService() => context = App._context;
+        public DataService(UserDBContext _context) => context = _context;
+
         public async Task<T> Get(int id) => (await context.Set<T>().FindAsync(id))!;
 
         public async Task<IEnumerable<T>> GetAll() => await context.Set<T>().ToListAsync();

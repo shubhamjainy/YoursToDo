@@ -7,7 +7,7 @@ namespace YoursToDo.WinUI
 {
     internal static class MessageDialog
     {
-        public static async Task ShowAsync(this UIElement element, string message, string title = "Error", string buttonText = "OK")
+        internal static async Task ShowAsync(this UIElement element, string message, string title = "Error", string buttonText = "OK")
         {
             var dialog = new ContentDialog
             {

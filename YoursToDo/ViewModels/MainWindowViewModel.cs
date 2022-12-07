@@ -9,11 +9,13 @@ namespace YoursToDo.ViewModels
 {
     internal sealed partial class MainWindowViewModel : ObservableObject
     {
-       private readonly IWindowFactory Factory;
+        private readonly IWindowFactory Factory;
+
         public MainWindowViewModel(IWindowFactory factory)
         {
             Factory = factory;
         }
+
         [RelayCommand]
         private void Login()
         {

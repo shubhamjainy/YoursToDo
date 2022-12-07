@@ -1,6 +1,6 @@
 ﻿namespace YoursToDo.WinUI
 {
-    internal class Constants
+    internal sealed class Constants
     {
         internal const bool IsMaximizable = true;
         internal const bool IsResizable = true;

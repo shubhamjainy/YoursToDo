@@ -1,4 +1,4 @@
-﻿using YoursToDo.Common.Models;
+﻿using YoursToDo.Common.Entity;
 
 namespace YoursToDo.Common.Interface
 {

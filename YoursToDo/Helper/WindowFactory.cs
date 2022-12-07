@@ -9,5 +9,6 @@ namespace YoursToDo.Helper
         public void ShowLoginWindow() => new LoginView().Show();
         public void ShowMainWindow() => new MainWindow().Show();
         public void ShowDashboardWindow() => new DashboardView().Show();
+        public bool? ShowEditItemWindow() => (new EditItemView()).ShowDialog();
     }
 }

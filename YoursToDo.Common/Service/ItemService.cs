@@ -1,16 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-using YoursToDo.Common;
+using YoursToDo.Common.Entity;
 using YoursToDo.Common.Interface;
-using YoursToDo.Common.Models;
 
-namespace YoursToDo.Service
+namespace YoursToDo.Common.Service
 {
-    internal sealed class ItemService : DataService<Item>, IItemService
+    public sealed class ItemService : DataService<Item>, IItemService
     {
-        UserDBContext context;
+        private readonly UserDBContext context;
 
-        public ItemService() => context = App._context;
+        public ItemService(UserDBContext _context) : base(_context) => context = _context;
 
         public async Task<int> Insert(Item entity)
         {

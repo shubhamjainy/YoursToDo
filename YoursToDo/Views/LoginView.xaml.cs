@@ -1,8 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Messaging;
-using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
-using YoursToDo.Common.Interface;
 using YoursToDo.Common.NotificationMessages;
 using YoursToDo.ViewModels;
 

@@ -1,14 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using CommunityToolkit.Mvvm.Messaging.Messages;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Windows;
 using YoursToDo.Common;
+using YoursToDo.Common.Entity;
 using YoursToDo.Common.Enums;
 using YoursToDo.Common.Interface;
-using YoursToDo.Common.Models;
 using YoursToDo.Common.NotificationMessages;
 
 namespace YoursToDo.ViewModels
