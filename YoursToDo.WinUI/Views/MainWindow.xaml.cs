@@ -18,11 +18,13 @@ namespace YoursToDo.WinUI.Views
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        public MainWindowViewModel ViewModel { get; set; }
+
         public MainWindow()
         {
             this.InitializeComponent();
             this.Title = "YourToDo";
-            Main.DataContext = Ioc.Default.GetService<MainWindowViewModel>();
+            ViewModel = Ioc.Default.GetService<MainWindowViewModel>();
 
             WeakReferenceMessenger.Default.Register<ClosingNotificationMessage>(this, (recipient, message) =>
             {

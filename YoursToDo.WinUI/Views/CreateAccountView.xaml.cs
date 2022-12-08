@@ -18,11 +18,13 @@ namespace YoursToDo.WinUI.Views
     /// </summary>
     public sealed partial class CreateAccountView : Window
     {
+        public CreateAccountViewModel ViewModel { get; set; }
+
         public CreateAccountView()
         {
             this.InitializeComponent();
             this.Title = "YourToDo";
-            CreateAccount.DataContext = Ioc.Default.GetService<CreateAccountViewModel>();
+            ViewModel = Ioc.Default.GetService<CreateAccountViewModel>();
 
             WeakReferenceMessenger.Default.Register<ClosingNotificationMessage>(this, (recipient, message) =>
             {

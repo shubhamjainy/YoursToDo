@@ -16,13 +16,13 @@ namespace YoursToDo.WinUI.Views
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class DashboardView : Window
+    public partial class DashboardView : Window
     {
         public DashboardView()
         {
             this.InitializeComponent();
             this.Title = "YourToDo";
-            Dashboard.DataContext = Ioc.Default.GetService<DashboardViewModel>();
+            ViewModel = Ioc.Default.GetService<DashboardViewModel>();
 
             WeakReferenceMessenger.Default.Register<ClosingNotificationMessage>(this, (recipient, message) =>
             {
@@ -38,5 +38,6 @@ namespace YoursToDo.WinUI.Views
         {
             WeakReferenceMessenger.Default.Unregister<ClosingNotificationMessage>(this);
         }
+        public DashboardViewModel ViewModel { get; set; }
     }
 }

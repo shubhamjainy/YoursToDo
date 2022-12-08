@@ -7,7 +7,7 @@ using YoursToDo.Common.NotificationMessages;
 
 namespace YoursToDo.WinUI.ViewModels
 {
-    internal sealed partial class MainWindowViewModel : ObservableObject
+    public sealed partial class MainWindowViewModel : ObservableObject
     {
         private readonly IWindowFactory Factory;
         public MainWindowViewModel(IWindowFactory factory)

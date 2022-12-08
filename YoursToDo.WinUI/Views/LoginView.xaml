@@ -4,11 +4,9 @@
 <Window
     x:Class="YoursToDo.WinUI.Views.LoginView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:YoursToDo.WinUI.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:viewmodels="using:YoursToDo.WinUI.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Closed="Window_Closed">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="Login">
@@ -23,19 +21,19 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <InfoBar Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" IsOpen="{Binding ShowErrorInfo}" InfoBarPanel.HorizontalOrientationMargin="10" IsClosable="False"  Severity="Error"  Title="Errors" Message="{Binding ErrorMessage}" />
+        <InfoBar Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" IsOpen="{x:Bind ViewModel.ShowErrorInfo, Mode=TwoWay}" InfoBarPanel.HorizontalOrientationMargin="10" IsClosable="False"  Severity="Error"  Title="Errors" Message="{x:Bind ViewModel.ErrorMessage, Mode=TwoWay}" />
         
         <TextBlock Grid.Column="0" Grid.Row="1" Text="{StaticResource Email}" Margin="5" FontSize="{StaticResource fontSizeNormal}" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="1" MinWidth="250" Margin="5" FontSize="{StaticResource fontSizeNormal}" Text="{Binding Email, Mode=TwoWay}"/>
+        <TextBox Grid.Column="1" Grid.Row="1" MinWidth="250" Margin="5" FontSize="{StaticResource fontSizeNormal}" Text="{x:Bind ViewModel.Email, Mode=TwoWay}"/>
         
         <TextBlock Grid.Column="0" Grid.Row="2" Text="{StaticResource Password}" Margin="5" FontSize="{StaticResource fontSizeNormal}" VerticalAlignment="Center"/>
-        <TextBox Grid.Column="1" Grid.Row="2" MinWidth="250" Margin="5" FontSize="{StaticResource fontSizeNormal}" Text="{Binding Password, Mode=TwoWay}"/>
-        
-        <Button Grid.Column="1" Grid.Row="3" Content="{StaticResource Login}" Margin="5" FontSize="{StaticResource fontSizeNormal}" Command="{Binding LoginCommand}"/>
+        <TextBox Grid.Column="1" Grid.Row="2" MinWidth="250" Margin="5" FontSize="{StaticResource fontSizeNormal}" Text="{x:Bind ViewModel.Password, Mode=TwoWay}"/>
+
+        <Button Grid.Column="1" Grid.Row="3" Content="{StaticResource Login}" Margin="5" FontSize="{StaticResource fontSizeNormal}" Command="{x:Bind ViewModel.LoginCommand}"/>
         
         <RelativePanel HorizontalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4">
             <TextBlock x:Name="txtbDontHaveAccount" Text="{StaticResource DontHaveAnAccount}" FontSize="18"/>
-            <HyperlinkButton RelativePanel.RightOf="txtbDontHaveAccount" Content="{StaticResource CreateAccount}" Padding="5,0" FontSize="18" Command="{Binding CreateAccountCommand}"/>
+            <HyperlinkButton RelativePanel.RightOf="txtbDontHaveAccount" Content="{StaticResource CreateAccount}" Padding="5,0" FontSize="18" Command="{x:Bind ViewModel.CreateAccountCommand}"/>
         </RelativePanel>
     </Grid>
 </Window>

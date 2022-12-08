@@ -10,7 +10,7 @@ using YoursToDo.Common.NotificationMessages;
 
 namespace YoursToDo.WinUI.ViewModels
 {
-    internal sealed partial class LoginViewModel : ObservableValidator
+    public sealed partial class LoginViewModel : ObservableValidator
     {
         private readonly IWindowFactory Factory;
         private readonly IUserService UserService;
