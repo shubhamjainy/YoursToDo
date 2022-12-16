@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using YoursToDo.Common.NotificationMessages;
+using YoursToDo.WinUI.NotificationMessages;
 using YoursToDo.WinUI.ViewModels;
 
 // To learn more about WinUI, the WinUI project structure,

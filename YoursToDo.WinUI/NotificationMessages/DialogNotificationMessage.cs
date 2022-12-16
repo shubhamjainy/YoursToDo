@@ -1,4 +1,4 @@
-﻿namespace YoursToDo.Common.NotificationMessages
+﻿namespace YoursToDo.WinUI.NotificationMessages
 {
     public class DialogNotificationMessage
     {

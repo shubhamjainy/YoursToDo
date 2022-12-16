@@ -1,20 +1,20 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using static ABI.System.Windows.Input.ICommand_Delegates;
+using Microsoft.UI.Xaml.Controls;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using System;
+using YoursToDo.Common;
+using YoursToDo.Common.Entity;
 using YoursToDo.Common.Enums;
 using YoursToDo.Common.Interface;
 using YoursToDo.Common.NotificationMessages;
-using YoursToDo.Common.Entity;
-using YoursToDo.Common;
+using YoursToDo.WinUI.NotificationMessages;
 
 namespace YoursToDo.WinUI.ViewModels
 {
-    public sealed partial class DashboardViewModel : ObservableObject
+    public sealed partial class DashboardViewModel : ObservableRecipient
     {
         private readonly IItemService ItemService;
         private readonly IUserService UserService;
@@ -59,7 +59,7 @@ namespace YoursToDo.WinUI.ViewModels
 
             if (result is not null)
             {
-                MessageBox.Show(Constant.NewItemAddedSuccessful);
+                WeakReferenceMessenger.Default.Send(new DialogNotificationMessage(Constant.NewItemAddedSuccessful, "Success"));
                 NewToDoItem = string.Empty;
             }
         }
@@ -78,23 +78,32 @@ namespace YoursToDo.WinUI.ViewModels
         }
 
         [RelayCommand]
-        private void Edit()
+        private async Task EditAsync()
         {
-            //if (MessageBox.Show(Constant.AreYouSureToUpdateSelectedItem, "Warning", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-            //{
-            //    UserManager.SetSelectedToDoItem(SelectedToDoItem);
-
-            //    Factory.ShowEditItemWindow();
-            //}
+            var result = await WeakReferenceMessenger.Default.Send(new DialogWithResultNotificationMessage(Constant.AreYouSureToUpdateSelectedItem, "Warning"));
+            if (result == ContentDialogResult.Primary)
+            {
+                UserManager.SetSelectedToDoItem(SelectedToDoItem);
+                var updatedToDoItemContent = await WeakReferenceMessenger.Default.Send(new CustomDialogNotificationMessage(SelectedToDoItem.Content));
+                if (!string.IsNullOrEmpty(updatedToDoItemContent) && SelectedToDoItem.Content != updatedToDoItemContent)
+                {
+                    var clone = SelectedToDoItem;
+                    user.Items.Remove(clone);
+                    clone.Content = updatedToDoItemContent;
+                    user.Items.Add(clone);
+                    await UserService.Update(user);
+                }
+            }
         }
 
         [RelayCommand]
         private async Task DeleteAsync()
         {
-            //if (MessageBox.Show(Constant.AreYouSureToDeleteSelectedItem, "Warning", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-            //{
-            //    await ItemService.Delete(SelectedToDoItem);
-            //}
+            var result = await WeakReferenceMessenger.Default.Send(new DialogWithResultNotificationMessage(Constant.AreYouSureToDeleteSelectedItem, "Warning"));
+            if (result == ContentDialogResult.Primary)
+            {
+                await ItemService.Delete(SelectedToDoItem);
+            }
         }
 
         private bool CanLoginExecute()

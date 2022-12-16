@@ -30,7 +30,7 @@
         </RelativePanel>
         <StackPanel Grid.Row="2" Orientation="Vertical">
             <TextBlock FontSize="{StaticResource fontSizeNormal}" Margin="10,10,0,0" Text="{StaticResource ToDoItems}" VerticalAlignment="Center" Padding="5,5,10,5" FontWeight="Bold"/>
-            <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="itemsList" ItemsSource="{x:Bind ViewModel.Items, Mode=TwoWay}" SelectionMode="Single" SelectedItem="{x:Bind ViewModel.SelectedToDoItem}">
+            <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="itemsList" ItemsSource="{x:Bind ViewModel.Items, Mode=TwoWay}" SelectionMode="Single" SelectedItem="{x:Bind ViewModel.SelectedToDoItem, Mode=TwoWay}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="Loaded">
                         <core:EventTriggerBehavior.Actions>
