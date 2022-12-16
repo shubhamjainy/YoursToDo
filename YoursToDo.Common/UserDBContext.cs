@@ -15,7 +15,7 @@ namespace YoursToDo.Common
             this.Database.EnsureCreated();
 
             // load the entities into EF Core
-            this.Users.Load();
+            this.Users!.Load();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
