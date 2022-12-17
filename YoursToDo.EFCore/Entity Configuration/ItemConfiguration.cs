@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using YoursToDo.Common.Entity;
+using YoursToDo.EFCore.Entity;
 
-namespace YoursToDo.Common.Entity_Configuration
+namespace YoursToDo.EFCore.Entity_Configuration
 {
     public class ItemConfiguration : IEntityTypeConfiguration<Item>
     {

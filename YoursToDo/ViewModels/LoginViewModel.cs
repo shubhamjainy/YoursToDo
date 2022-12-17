@@ -8,6 +8,7 @@ using YoursToDo.Common;
 using YoursToDo.Common.Enums;
 using YoursToDo.Common.Interface;
 using YoursToDo.Common.NotificationMessages;
+using YoursToDo.EFCore.Interface;
 
 namespace YoursToDo.ViewModels
 {

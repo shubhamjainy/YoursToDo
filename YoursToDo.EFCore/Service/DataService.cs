@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using YoursToDo.Common.Interface;
+using YoursToDo.EFCore.Interface;
 
-namespace YoursToDo.Common.Service
+namespace YoursToDo.EFCore.Service
 {
     public class DataService<T> : IDataService<T> where T : class
     {

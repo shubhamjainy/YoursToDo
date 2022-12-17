@@ -5,10 +5,11 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
-using YoursToDo.Common.Entity;
 using YoursToDo.Common.Enums;
 using YoursToDo.Common.Interface;
 using YoursToDo.Common.NotificationMessages;
+using YoursToDo.EFCore.Entity;
+using YoursToDo.EFCore.Interface;
 using Constant = YoursToDo.Common.Constant;
 
 namespace YoursToDo.ViewModels

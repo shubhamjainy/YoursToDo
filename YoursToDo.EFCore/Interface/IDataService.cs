@@ -1,4 +1,4 @@
-﻿namespace YoursToDo.Common.Interface
+﻿namespace YoursToDo.EFCore.Interface
 {
     public interface IDataService<T>
     {

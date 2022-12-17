@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using YoursToDo.Common.Entity;
-using YoursToDo.Common.Interface;
+using YoursToDo.EFCore.Entity;
+using YoursToDo.EFCore.Interface;
 
-namespace YoursToDo.Common.Service
+namespace YoursToDo.EFCore.Service
 {
     public sealed class UserService : DataService<User>, IUserService
     {

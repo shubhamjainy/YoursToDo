@@ -1,4 +1,4 @@
-﻿using YoursToDo.Common.Entity;
+﻿using YoursToDo.EFCore.Entity;
 
 namespace YoursToDo.Common.Interface
 {

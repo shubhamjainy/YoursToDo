@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoursToDo", "YoursToDo\Your
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoursToDo.Common", "YoursToDo.Common\YoursToDo.Common.csproj", "{AE623250-D3C2-4E36-8DA9-23DE2FB6BBD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoursToDo.WinUI", "YoursToDo.WinUI\YoursToDo.WinUI.csproj", "{C0D514EE-E131-482B-A4FB-AE1EA164E225}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoursToDo.WinUI", "YoursToDo.WinUI\YoursToDo.WinUI.csproj", "{C0D514EE-E131-482B-A4FB-AE1EA164E225}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoursToDo.EFCore", "YoursToDo.EFCore\YoursToDo.EFCore.csproj", "{CF393A69-242A-4BE6-B375-55E7AB797FE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,22 @@ Global
 		{C0D514EE-E131-482B-A4FB-AE1EA164E225}.Release|x86.ActiveCfg = Release|x86
 		{C0D514EE-E131-482B-A4FB-AE1EA164E225}.Release|x86.Build.0 = Release|x86
 		{C0D514EE-E131-482B-A4FB-AE1EA164E225}.Release|x86.Deploy.0 = Release|x86
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Debug|arm64.Build.0 = Debug|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Debug|x64.Build.0 = Debug|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Debug|x86.Build.0 = Debug|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Release|arm64.ActiveCfg = Release|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Release|arm64.Build.0 = Release|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Release|x64.ActiveCfg = Release|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Release|x64.Build.0 = Release|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Release|x86.ActiveCfg = Release|Any CPU
+		{CF393A69-242A-4BE6-B375-55E7AB797FE2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

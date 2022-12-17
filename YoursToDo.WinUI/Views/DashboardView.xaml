@@ -9,7 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:model="using:YoursToDo.Common.Entity"
+    xmlns:model="using:YoursToDo.EFCore.Entity"
     mc:Ignorable="d" 
     Closed="Window_Closed">
     <Grid VerticalAlignment="Top" x:Name="Dashboard">

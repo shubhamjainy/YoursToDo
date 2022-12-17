@@ -1,11 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
-using YoursToDo.Common;
-using YoursToDo.Common.Entity;
 using YoursToDo.Common.Interface;
 using YoursToDo.Common.Manager;
-using YoursToDo.Common.Service;
+using YoursToDo.EFCore;
+using YoursToDo.EFCore.Entity;
+using YoursToDo.EFCore.Interface;
+using YoursToDo.EFCore.Service;
 using YoursToDo.Helper;
 using YoursToDo.ViewModels;
 

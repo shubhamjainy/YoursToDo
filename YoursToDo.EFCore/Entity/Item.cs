@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace YoursToDo.Common.Entity
+namespace YoursToDo.EFCore.Entity
 {
     public record Item
     {

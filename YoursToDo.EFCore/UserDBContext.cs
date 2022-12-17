@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using YoursToDo.Common.Entity;
-using YoursToDo.Common.Entity_Configuration;
+using YoursToDo.EFCore.Entity;
+using YoursToDo.EFCore.Entity_Configuration;
 
-namespace YoursToDo.Common
+namespace YoursToDo.EFCore
 {
     public sealed class UserDBContext : DbContext
     {

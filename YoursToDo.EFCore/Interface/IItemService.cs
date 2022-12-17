@@ -1,6 +1,6 @@
-﻿using YoursToDo.Common.Entity;
+﻿using YoursToDo.EFCore.Entity;
 
-namespace YoursToDo.Common.Interface
+namespace YoursToDo.EFCore.Interface
 {
     public interface IItemService : IDataService<Item>
     {

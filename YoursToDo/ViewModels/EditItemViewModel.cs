@@ -2,10 +2,11 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using System.Threading.Tasks;
-using YoursToDo.Common.Entity;
 using YoursToDo.Common.Enums;
 using YoursToDo.Common.Interface;
 using YoursToDo.Common.NotificationMessages;
+using YoursToDo.EFCore.Entity;
+using YoursToDo.EFCore.Interface;
 
 namespace YoursToDo.ViewModels
 {

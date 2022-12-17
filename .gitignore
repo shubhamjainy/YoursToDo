@@ -19,3 +19,7 @@
 /YoursToDo.WinUI/Properties/PublishProfiles
 /YoursToDo.WinUI/YoursToDo.WinUI.csproj.user
 /YoursToDo/bin/Release/net7.0-windows
+/YoursToDo.Common/bin/Release/net7.0
+/YoursToDo.EFCore/obj
+/YoursToDo.EFCore/bin/Release/net6.0
+/YoursToDo.EFCore/bin/Release/net7.0

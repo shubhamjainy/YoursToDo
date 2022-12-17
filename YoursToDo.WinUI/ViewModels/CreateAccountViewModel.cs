@@ -5,10 +5,11 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using YoursToDo.Common;
-using YoursToDo.Common.Entity;
 using YoursToDo.Common.Enums;
 using YoursToDo.Common.Interface;
 using YoursToDo.Common.NotificationMessages;
+using YoursToDo.EFCore.Entity;
+using YoursToDo.EFCore.Interface;
 using YoursToDo.WinUI.NotificationMessages;
 
 namespace YoursToDo.WinUI.ViewModels
