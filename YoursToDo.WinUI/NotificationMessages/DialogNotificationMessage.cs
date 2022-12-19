@@ -1,6 +1,6 @@
 ﻿namespace YoursToDo.WinUI.NotificationMessages
 {
-    public class DialogNotificationMessage
+    internal sealed class DialogNotificationMessage
     {
         /// <summary>
         /// Gets a string containing any arbitrary message to be passed to recipient(s).

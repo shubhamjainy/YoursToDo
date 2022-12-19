@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace YoursToDo.WinUI.NotificationMessages
 {
-    public class CustomDialogNotificationMessage : AsyncRequestMessage<string>
+    internal sealed class CustomDialogNotificationMessage : AsyncRequestMessage<string>
     {
         public string Title { get; private set; }
         public string DefaultText { get; private set; }

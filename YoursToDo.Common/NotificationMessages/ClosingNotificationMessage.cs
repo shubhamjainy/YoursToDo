@@ -3,7 +3,7 @@ using YoursToDo.Common.Enums;
 
 namespace YoursToDo.Common.NotificationMessages
 {
-    public class ClosingNotificationMessage : ValueChangedMessage<WindowType>
+    public sealed class ClosingNotificationMessage : ValueChangedMessage<WindowType>
     {
         /// <summary>
         /// Gets a string containing any arbitrary message to be passed to recipient(s).

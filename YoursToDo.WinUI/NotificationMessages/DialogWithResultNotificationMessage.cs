@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace YoursToDo.WinUI.NotificationMessages
 {
-    public class DialogWithResultNotificationMessage : AsyncRequestMessage<ContentDialogResult>
+    internal sealed class DialogWithResultNotificationMessage : AsyncRequestMessage<ContentDialogResult>
 
     {
         /// <summary>
