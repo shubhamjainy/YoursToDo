@@ -4,7 +4,7 @@ using YoursToDo.EFCore.Interface;
 
 namespace YoursToDo.EFCore.Service
 {
-    public class DataService<T> : IDataService<T> where T : class
+    public abstract class DataService<T> : IDataService<T> where T : class
     {
         private readonly UserDBContext context;
 

@@ -22,8 +22,7 @@ namespace YoursToDo
             // Register services
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
-                .AddSingleton<IDataService<User>, DataService<User>>()
-                .AddSingleton<IUserService, UserService>()
+               .AddSingleton<IUserService, UserService>()
                 .AddSingleton<IItemService, ItemService>()
                 .AddSingleton<IWindowFactory, WindowFactory>()
                 .AddSingleton<IUserManager, UserManager>()

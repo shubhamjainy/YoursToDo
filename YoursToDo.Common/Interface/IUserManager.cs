@@ -4,13 +4,21 @@ namespace YoursToDo.Common.Interface
 {
     public interface IUserManager
     {
-        string Name { get; set; }
-        string Email { get; set; }
-        int UserId { get; set; }
-        Item? SelectedItem { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public int UserId { get; set; }
+        public Item? SelectedItem { get; set; }
 
-        void SetUserData(string userName, string email, int userId);
-
-        void SetSelectedToDoItem(Item selectedItem);
+        public void SetUserData(string userName, string email, int userId)
+        {
+            this.Name = userName;
+            this.Email = email;
+            this.UserId = userId;
+        }
+        public void SetSelectedToDoItem(Item selectedItem)
+        {
+            this.SelectedItem = selectedItem;
+        }
     }
+
 }
