@@ -14,6 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
         <Image Source="/Assets/todo.png" />
@@ -25,5 +26,6 @@
             </RelativePanel>
             <Button Content="{StaticResource CreateAccount}" Command="{x:Bind ViewModel.CreateAccountCommand}" Margin="0,0,0,10"/>
         </Grid>
+        <TextBlock Grid.Row="2" Text="{x:Bind ViewModel.CurrentTime, Mode=OneWay}" Margin="10,10" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

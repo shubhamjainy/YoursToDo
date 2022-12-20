@@ -9,6 +9,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Image Source="/Images/todo.png" />
         <Grid  Grid.Row="1">
@@ -18,5 +19,6 @@
             </WrapPanel>
             <Button Content="{StaticResource CreateAccount}" Command="{Binding CreateAccountCommand}" Margin="0,0,0,10"/>
         </Grid>
+        <TextBlock Grid.Row="2" Text="{Binding CurrentTime, StringFormat='{}Time: {0:d}'}" Margin="10,10" HorizontalAlignment="Right"/>
     </Grid>
 </Window>
