@@ -6,9 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        ShowInTaskbar="False"
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" WindowStyle="ToolWindow" Topmost="True"
+        ShowInTaskbar="False" WindowStyle="ToolWindow" Topmost="True"
         Title="YourToDo" Height="280" Width="600" Name="EditItem" WindowStartupLocation="CenterOwner">
     <interactivity:Interaction.Triggers>
         <interactivity:EventTrigger EventName="Loaded">
@@ -24,9 +22,9 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="{StaticResource fontSizeNormal}" Text="{StaticResource UpdateToDoItem}" VerticalAlignment="Center" Padding="5" Margin="10"/>
-        <TextBox Grid.Row="0" Grid.Column="1" MaxLines="2" MinWidth="300" FontSize="{StaticResource fontSizeNormal}" TextWrapping="Wrap" Padding="5" Text="{Binding UpdatedToDoItem}" Margin="10"/>
-        <Button Grid.Row="1" Grid.Column="0" Width="100" Content="{StaticResource Edit}" FontSize="{StaticResource fontSizeNormal}" Command="{Binding EditCommand}" Margin="10"/>
-        <Button Grid.Row="1" Grid.Column="1" Width="100" Content="{StaticResource Cancel}" FontSize="{StaticResource fontSizeNormal}" Command="{Binding CancelCommand}" Margin="10"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{StaticResource UpdateToDoItem}" Margin="10"/>
+        <TextBox Grid.Row="0" Grid.Column="1" MaxLines="2" MinWidth="300" TextWrapping="Wrap" Text="{Binding UpdatedToDoItem, UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
+        <Button Grid.Row="1" Grid.Column="0" Width="100" Content="{StaticResource Edit}" Command="{Binding EditCommand}" Margin="10"/>
+        <Button Grid.Row="1" Grid.Column="1" Width="100" Content="{StaticResource Cancel}" Command="{Binding CancelCommand}" Margin="10"/>
     </Grid>
 </Window>

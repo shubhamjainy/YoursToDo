@@ -5,8 +5,6 @@
         xmlns:interactivity="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
         Title="YourToDo" Height="450" Width="800" Name="Dashboard" WindowStartupLocation="CenterScreen">
     <Grid VerticalAlignment="Top">
         <Grid.RowDefinitions>
@@ -16,17 +14,21 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0" VerticalAlignment="Top" Margin="10" HorizontalAlignment="Right">
-            <TextBlock FontSize="{StaticResource fontSizeNormal}" Text="{Binding Name}" VerticalAlignment="Center" Padding="5,5,10,5" FontWeight="Bold"/>
-            <Button Content="{StaticResource LogOut}" FontSize="{StaticResource fontSizeNormal}" Command="{Binding LogOutCommand}"/>
+            <TextBlock Text="{Binding Name}" Padding="5,5,10,5" FontWeight="Bold"/>
+            <Button Content="{StaticResource LogOut}" Command="{Binding LogOutCommand}"/>
         </WrapPanel>
         <WrapPanel Grid.Row="1" VerticalAlignment="Top" Margin="10" Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock FontSize="{StaticResource fontSizeNormal}" Text="{StaticResource EnterNewToDoItem}" VerticalAlignment="Center" Padding="5"/>
-            <TextBox MaxLines="2" MinWidth="300" FontSize="{StaticResource fontSizeNormal}" TextWrapping="Wrap" Padding="5" Text="{Binding NewToDoItem}" />
-            <Button Content="{StaticResource Add}" FontSize="{StaticResource fontSizeNormal}" Command="{Binding AddCommand}"/>
+            <TextBlock Text="{StaticResource EnterNewToDoItem}" Padding="5"/>
+            <TextBox MaxLines="2" MinWidth="300" TextWrapping="Wrap" Padding="5" Text="{Binding NewToDoItem, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="{StaticResource Add}" Command="{Binding AddCommand}"/>
         </WrapPanel>
-        <StackPanel Grid.Row="2" Orientation="Vertical">
-            <TextBlock FontSize="{StaticResource fontSizeNormal}" Margin="10,10,0,0" Text="{StaticResource ToDoItems}" VerticalAlignment="Center" Padding="5,5,10,5" FontWeight="Bold"/>
-            <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="itemsList" ItemsSource="{Binding Items}" SelectionMode="Single" SelectedItem="{Binding SelectedToDoItem}">
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Margin="10,10,0,0" Text="{StaticResource ToDoItems}" Padding="5,5,10,5" FontWeight="Bold"/>
+            <ListBox Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" x:Name="itemsList" ItemsSource="{Binding Items}" SelectionMode="Single" SelectedItem="{Binding SelectedToDoItem}">
                 <interactivity:Interaction.Triggers>
                     <interactivity:EventTrigger EventName="Loaded">
                         <interactivity:InvokeCommandAction Command="{Binding LoadedItemsCommand}"/>
@@ -39,13 +41,13 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding Content}" FontSize="{StaticResource fontSizeNormal}"/>
-                            <TextBlock Grid.Column="1" Text="{Binding CreatedAt}" FontSize="{StaticResource smallSizeNormal}" HorizontalAlignment="Right" Foreground="DarkGreen"/>
+                            <TextBlock Grid.Column="0" Text="{Binding Content}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding CreatedAt}" HorizontalAlignment="Right" Foreground="DarkGreen"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </StackPanel>
+        </Grid>
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
             <StackPanel.Style>
                 <Style TargetType="{x:Type StackPanel}">
@@ -57,8 +59,8 @@
                     </Style.Triggers>
                 </Style>
             </StackPanel.Style>
-            <Button Content="{StaticResource Edit}" FontSize="{StaticResource fontSizeNormal}" Command="{Binding EditCommand}" Margin="0,0,10,0"/>
-            <Button Content="{StaticResource Delete}" FontSize="{StaticResource fontSizeNormal}" Command="{Binding DeleteCommand}" Margin="10,0,0,0"/>
+            <Button Content="{StaticResource Edit}" Command="{Binding EditCommand}" Margin="0,0,10,0"/>
+            <Button Content="{StaticResource Delete}" Command="{Binding DeleteCommand}" Margin="10,0,0,0"/>
         </StackPanel>
     </Grid>
 </Window>

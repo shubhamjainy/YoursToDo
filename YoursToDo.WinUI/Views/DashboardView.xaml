@@ -20,17 +20,21 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <RelativePanel Grid.Row="0" VerticalAlignment="Top" Margin="10" HorizontalAlignment="Right">
-            <TextBlock x:Name="tbName" FontSize="{StaticResource fontSizeNormal}" Text="{x:Bind ViewModel.Name}" VerticalAlignment="Center" Padding="5,5,10,5" FontWeight="Bold"/>
-            <Button Content="{StaticResource LogOut}" RelativePanel.RightOf="tbName" FontSize="{StaticResource fontSizeNormal}" Command="{x:Bind ViewModel.LogOutCommand}"/>
+            <TextBlock x:Name="tbName" Text="{x:Bind ViewModel.Name}" Padding="5,5,10,5" FontWeight="Bold"/>
+            <Button Content="{StaticResource LogOut}" RelativePanel.RightOf="tbName" Command="{x:Bind ViewModel.LogOutCommand}"/>
         </RelativePanel>
         <RelativePanel Grid.Row="1" VerticalAlignment="Top" Margin="10" HorizontalAlignment="Center">
-            <TextBlock x:Name="tbEnterNewItem" FontSize="{StaticResource fontSizeNormal}" Text="{StaticResource EnterNewToDoItem}" VerticalAlignment="Center" Padding="5"/>
-            <TextBox x:Name="txtbEnterNewItem" RelativePanel.RightOf="tbEnterNewItem"  MinWidth="300" FontSize="{StaticResource fontSizeNormal}" TextWrapping="Wrap" Padding="5" Text="{x:Bind ViewModel.NewToDoItem, Mode=TwoWay}" />
-            <Button RelativePanel.RightOf="txtbEnterNewItem"  Content="{StaticResource Add}" FontSize="{StaticResource fontSizeNormal}" Command="{x:Bind ViewModel.AddCommand}"/>
+            <TextBlock x:Name="tbEnterNewItem" Text="{StaticResource EnterNewToDoItem}" Padding="5"/>
+            <TextBox x:Name="txtbEnterNewItem" RelativePanel.RightOf="tbEnterNewItem"  MinWidth="300" TextWrapping="Wrap" Padding="5" Text="{x:Bind ViewModel.NewToDoItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Button RelativePanel.RightOf="txtbEnterNewItem" Content="{StaticResource Add}" Command="{x:Bind ViewModel.AddCommand}"/>
         </RelativePanel>
-        <StackPanel Grid.Row="2" Orientation="Vertical">
-            <TextBlock FontSize="{StaticResource fontSizeNormal}" Margin="10,10,0,0" Text="{StaticResource ToDoItems}" VerticalAlignment="Center" Padding="5,5,10,5" FontWeight="Bold"/>
-            <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="itemsList" ItemsSource="{x:Bind ViewModel.Items, Mode=TwoWay}" SelectionMode="Single" SelectedItem="{x:Bind ViewModel.SelectedToDoItem, Mode=TwoWay}">
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Margin="10,10,0,0" Text="{StaticResource ToDoItems}" Padding="5,5,10,5" FontWeight="Bold"/>
+            <ListBox Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="itemsList" ItemsSource="{x:Bind ViewModel.Items, Mode=TwoWay}" SelectionMode="Single" SelectedItem="{x:Bind ViewModel.SelectedToDoItem, Mode=TwoWay}">
                 <interactivity:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="Loaded">
                         <core:EventTriggerBehavior.Actions>
@@ -45,25 +49,25 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{x:Bind Content}" FontSize="{StaticResource fontSizeNormal}"/>
+                            <TextBlock Grid.Column="0" Text="{x:Bind Content}"/>
                             <TextBlock Grid.Column="1" Text="{x:Bind CreatedAt}" FontSize="{StaticResource smallSizeNormal}" HorizontalAlignment="Right" Foreground="DarkGreen"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </StackPanel>
-        <StackPanel x:Name="MyImage" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+        </Grid>
+        <StackPanel x:Name="stackpnl" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
             <interactivity:Interaction.Behaviors>
                 <core:DataTriggerBehavior Binding="{Binding SelectedIndex, ElementName=itemsList, Mode=TwoWay}" ComparisonCondition="LessThan" Value="0">
-                    <core:ChangePropertyAction TargetObject="{Binding ElementName=MyImage, Mode=TwoWay}" PropertyName="Visibility" Value="Collapsed" />
+                    <core:ChangePropertyAction TargetObject="{Binding ElementName=stackpnl, Mode=TwoWay}" PropertyName="Visibility" Value="Collapsed" />
                 </core:DataTriggerBehavior>
                 <core:DataTriggerBehavior Binding="{Binding SelectedIndex, ElementName=itemsList, Mode=TwoWay}" ComparisonCondition="GreaterThanOrEqual" Value="0">
-                    <core:ChangePropertyAction TargetObject="{Binding ElementName=MyImage, Mode=TwoWay}" PropertyName="Visibility" Value="Visible" />
+                    <core:ChangePropertyAction TargetObject="{Binding ElementName=stackpnl, Mode=TwoWay}" PropertyName="Visibility" Value="Visible" />
                 </core:DataTriggerBehavior>
             </interactivity:Interaction.Behaviors>
-            <Button Content="{StaticResource Edit}" FontSize="{StaticResource fontSizeNormal}" Command="{x:Bind ViewModel.EditCommand}" Margin="0,0,10,0">
+            <Button Content="{StaticResource Edit}" Command="{x:Bind ViewModel.EditCommand}" Margin="0,0,10,0">
             </Button>
-            <Button Content="{StaticResource Delete}" FontSize="{StaticResource fontSizeNormal}" Command="{x:Bind ViewModel.DeleteCommand}" Margin="10,0,0,0"/>
+            <Button Content="{StaticResource Delete}" Command="{x:Bind ViewModel.DeleteCommand}" Margin="10,0,0,0"/>
         </StackPanel>
     </Grid>
 </Window>

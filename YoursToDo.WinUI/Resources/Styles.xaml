@@ -11,9 +11,38 @@
     <x:Double x:Key="fontSizeNormal">18</x:Double>
     <x:Double x:Key="smallSizeNormal">12</x:Double>
 
-    <Style x:Key="buttonStyle" TargetType="Button">
-        <Setter Property="Background" Value="#29abe1" />
+    <Style TargetType="HyperlinkButton">
+        <Setter Property="Padding" Value="5,0" />
+        <Setter Property="FontSize" Value="{StaticResource fontSizeNormal}" />
+    </Style>
+    
+    <Style TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="FontSize" Value="{StaticResource fontSizeNormal}" />
     </Style>
 
+    <Style TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource fontSizeNormal}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="FontSize" Value="{StaticResource fontSizeNormal}" />
+        <Setter Property="MinWidth" Value="250" />
+        <Setter Property="Margin" Value="5" />
+    </Style>
+
+    <Style TargetType="InfoBar">
+        <Setter Property="IsClosable" Value="False" />
+        <Setter Property="Severity" Value="Error" />
+        <Setter Property="Title" Value="Errors" />
+    </Style>
+
+    <Style TargetType="PasswordBox">
+        <Setter Property="FontSize" Value="{StaticResource fontSizeNormal}" />
+        <Setter Property="MinWidth" Value="250" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="PasswordChar" Value="*" />
+    </Style>
 </ResourceDictionary>

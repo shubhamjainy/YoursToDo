@@ -3,8 +3,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         Title="YourToDo" Name="CreateAccount" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -20,22 +18,22 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Text="{StaticResource Name}" Margin="5" FontSize="{StaticResource fontSizeNormal}" />
-        <TextBox Grid.Column="1" Grid.Row="0" MinWidth="250" Margin="5" FontSize="{StaticResource fontSizeNormal}" Text="{Binding Name}"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="{StaticResource Name}" Margin="5"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  MaxLength="30"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Text="{StaticResource Email}" Margin="5" FontSize="{StaticResource fontSizeNormal}" />
-        <TextBox Grid.Column="1" Grid.Row="1" MinWidth="250" Margin="5" FontSize="{StaticResource fontSizeNormal}" Text="{Binding Email}"/>
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="{StaticResource Email}" Margin="5"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"  MaxLength="30"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Text="{StaticResource Password}" Margin="5" FontSize="{StaticResource fontSizeNormal}"/>
-        <TextBox Grid.Column="1" Grid.Row="2" MinWidth="250" Margin="5" FontSize="{StaticResource fontSizeNormal}" Text="{Binding Password}"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" Text="{StaticResource Password}" Margin="5"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"  MaxLength="15"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Text="{StaticResource ConfirmPassword}" Margin="5" FontSize="{StaticResource fontSizeNormal}" />
-        <TextBox Grid.Column="1" Grid.Row="3" MinWidth="250" Margin="5" FontSize="{StaticResource fontSizeNormal}" Text="{Binding ConfirmPassword}"/>
+        <TextBlock Grid.Column="0" Grid.Row="3" Text="{StaticResource ConfirmPassword}" Margin="5"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding ConfirmPassword, UpdateSourceTrigger=PropertyChanged}"  MaxLength="15"/>
 
-        <Button Grid.Column="1" Grid.Row="4" Content="{StaticResource CreateAccount}" Margin="5" FontSize="{StaticResource fontSizeNormal}" Command="{Binding CreateAccountCommand}"/>
+        <Button Grid.Column="1" Grid.Row="4" Content="{StaticResource CreateAccount}" Margin="5" Command="{Binding CreateAccountCommand}"/>
         <WrapPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" HorizontalAlignment="Center">
-            <TextBlock Text="{StaticResource DoYouAlreadyHaveAnAccount}" FontSize="18" />
-            <Button Content="{StaticResource Login}" Padding="10,0" FontSize="18" Command="{Binding LoginCommand}" Style="{StaticResource linkButtonStyle}" Cursor="Hand" Margin="10,0"/>
+            <TextBlock Text="{StaticResource DoYouAlreadyHaveAnAccount}"/>
+            <Button Content="{StaticResource Login}" Command="{Binding LoginCommand}" Style="{StaticResource linkButtonStyle}" Margin="10,0"/>
         </WrapPanel>
     </Grid>
 </Window>
