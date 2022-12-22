@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using Microsoft.UI.Xaml.Controls;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
@@ -39,6 +40,12 @@ namespace YoursToDo.WinUI.ViewModels
                 ShowErrorInfo = true;
                 ErrorMessage = string.Join("\n", GetErrors());
             }
+            else
+            {
+                ShowErrorInfo = false;
+                ErrorMessage = "";
+            }
+
             var canExecute = !HasErrors && !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(ConfirmPassword);
             if (canExecute)
             {
@@ -55,7 +62,7 @@ namespace YoursToDo.WinUI.ViewModels
 
             if (getUser)
             {
-                WeakReferenceMessenger.Default.Send(new DialogNotificationMessage(Constant.AccountAlreadyExists));
+               await WeakReferenceMessenger.Default.Send(new DialogWithOkButtonNotificationMessage(Constant.AccountAlreadyExists));
 
                 return;
             }
@@ -69,8 +76,11 @@ namespace YoursToDo.WinUI.ViewModels
             var result = await UserService.Create(user);
             if (result is not null)
             {
-                WeakReferenceMessenger.Default.Send(new DialogNotificationMessage(Constant.AccountCreationSuccessful, "Success"));
-                Login();
+                var dialogResult = await WeakReferenceMessenger.Default.Send(new DialogWithOkButtonNotificationMessage(Constant.AccountCreationSuccessful, "Success"));
+                if (dialogResult == ContentDialogResult.Primary)
+                {
+                    Login();
+                }
             }
         }
 

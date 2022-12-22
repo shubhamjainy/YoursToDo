@@ -60,7 +60,7 @@ namespace YoursToDo.WinUI.ViewModels
 
             if (result is not null)
             {
-                WeakReferenceMessenger.Default.Send(new DialogNotificationMessage(Constant.NewItemAddedSuccessful, "Success"));
+                await WeakReferenceMessenger.Default.Send(new DialogWithOkButtonNotificationMessage(Constant.NewItemAddedSuccessful, "Success"));
                 NewToDoItem = string.Empty;
             }
         }
@@ -81,7 +81,7 @@ namespace YoursToDo.WinUI.ViewModels
         [RelayCommand]
         private async Task EditAsync()
         {
-            var result = await WeakReferenceMessenger.Default.Send(new DialogWithResultNotificationMessage(Constant.AreYouSureToUpdateSelectedItem, "Warning"));
+            var result = await WeakReferenceMessenger.Default.Send(new DialogWithOkCancelButtonNotificationMessage(Constant.AreYouSureToUpdateSelectedItem, "Warning"));
             if (result == ContentDialogResult.Primary)
             {
                 UserManager.SetSelectedToDoItem(SelectedToDoItem);
@@ -100,7 +100,7 @@ namespace YoursToDo.WinUI.ViewModels
         [RelayCommand]
         private async Task DeleteAsync()
         {
-            var result = await WeakReferenceMessenger.Default.Send(new DialogWithResultNotificationMessage(Constant.AreYouSureToDeleteSelectedItem, "Warning"));
+            var result = await WeakReferenceMessenger.Default.Send(new DialogWithOkCancelButtonNotificationMessage(Constant.AreYouSureToDeleteSelectedItem, "Warning"));
             if (result == ContentDialogResult.Primary)
             {
                 await ItemService.Delete(SelectedToDoItem);

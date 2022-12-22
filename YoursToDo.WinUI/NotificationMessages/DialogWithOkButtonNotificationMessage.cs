@@ -1,6 +1,9 @@
-﻿namespace YoursToDo.WinUI.NotificationMessages
+﻿using CommunityToolkit.Mvvm.Messaging.Messages;
+using Microsoft.UI.Xaml.Controls;
+
+namespace YoursToDo.WinUI.NotificationMessages
 {
-    internal sealed class DialogNotificationMessage
+    internal sealed class DialogWithOkButtonNotificationMessage: AsyncRequestMessage<ContentDialogResult>
     {
         /// <summary>
         /// Gets a string containing any arbitrary message to be passed to recipient(s).
@@ -13,7 +16,7 @@
         /// Initializes a new instance of the DialogNotificationMessage class.
         /// </summary>
         /// <param name="message"></param>
-        public DialogNotificationMessage(string message, string title = "Error", string buttonText = "OK")
+        public DialogWithOkButtonNotificationMessage(string message, string title = "Error", string buttonText = "OK")
         {
             Message = message;
             Title = title;

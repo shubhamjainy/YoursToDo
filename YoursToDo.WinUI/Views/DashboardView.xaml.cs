@@ -34,12 +34,13 @@ namespace YoursToDo.WinUI.Views
                 }
             });
 
-            WeakReferenceMessenger.Default.Register<DialogNotificationMessage>(this, async (recipient, message) =>
+            WeakReferenceMessenger.Default.Register<DialogWithOkButtonNotificationMessage>(this, async (recipient, message) =>
             {
-                await MessageDialog.ShowAsync(this.Content, message.Message, message.Title, message.ButtonText);
+                var result = MessageDialog.ShowAsync(this.Content, message.Message, message.Title, message.ButtonText);
+                message.Reply(result);
             });
 
-            WeakReferenceMessenger.Default.Register<DialogWithResultNotificationMessage>(this, (recipient, message) =>
+            WeakReferenceMessenger.Default.Register<DialogWithOkCancelButtonNotificationMessage>(this, (recipient, message) =>
             {
                 var result = MessageDialog.ShowWithResultAsync(this.Content, message.Message, message.Title, message.PrimaryButtonText, message.SecondaryButtonText);
                 message.Reply(result);
@@ -55,8 +56,8 @@ namespace YoursToDo.WinUI.Views
         private void Window_Closed(object sender, WindowEventArgs args)
         {
             WeakReferenceMessenger.Default.Unregister<ClosingNotificationMessage>(this);
-            WeakReferenceMessenger.Default.Unregister<DialogNotificationMessage>(this);
-            WeakReferenceMessenger.Default.Unregister<DialogWithResultNotificationMessage>(this);
+            WeakReferenceMessenger.Default.Unregister<DialogWithOkButtonNotificationMessage>(this);
+            WeakReferenceMessenger.Default.Unregister<DialogWithOkCancelButtonNotificationMessage>(this);
             WeakReferenceMessenger.Default.Unregister<CustomDialogNotificationMessage>(this);
         }
         public DashboardViewModel ViewModel { get; set; }

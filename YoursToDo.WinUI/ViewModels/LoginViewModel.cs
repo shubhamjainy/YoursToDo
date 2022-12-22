@@ -39,7 +39,7 @@ namespace YoursToDo.WinUI.ViewModels
             }
             else
             {
-                WeakReferenceMessenger.Default.Send(new DialogNotificationMessage(Constant.IncorrectEmailOrPassword));
+                await WeakReferenceMessenger.Default.Send(new DialogWithOkButtonNotificationMessage(Constant.IncorrectEmailOrPassword));
             }
         }
 
@@ -50,6 +50,12 @@ namespace YoursToDo.WinUI.ViewModels
                 ShowErrorInfo = true;
                 ErrorMessage = string.Join("\n", GetErrors());
             }
+            else
+            {
+                ShowErrorInfo = false;
+                ErrorMessage = "";
+            }
+
             var canExecute = !HasErrors && !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password);
             if (canExecute)
             {

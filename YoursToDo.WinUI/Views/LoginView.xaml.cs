@@ -36,16 +36,17 @@ namespace YoursToDo.WinUI.Views
                 }
             });
 
-            WeakReferenceMessenger.Default.Register<DialogNotificationMessage>(this, async (recipient, message) =>
+            WeakReferenceMessenger.Default.Register<DialogWithOkButtonNotificationMessage>(this, async (recipient, message) =>
             {
-                await MessageDialog.ShowAsync(this.Content, message.Message, message.Title, message.ButtonText);
+                var result = MessageDialog.ShowAsync(this.Content, message.Message, message.Title, message.ButtonText);
+                message.Reply(result);
             });
         }
 
         private void Window_Closed(object sender, WindowEventArgs args)
         {
             WeakReferenceMessenger.Default.Unregister<ClosingNotificationMessage>(this);
-            WeakReferenceMessenger.Default.Unregister<DialogNotificationMessage>(this);
+            WeakReferenceMessenger.Default.Unregister<DialogWithOkButtonNotificationMessage>(this);
         }
     }
 }

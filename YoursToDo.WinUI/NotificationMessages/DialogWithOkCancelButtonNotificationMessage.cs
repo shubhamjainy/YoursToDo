@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace YoursToDo.WinUI.NotificationMessages
 {
-    internal sealed class DialogWithResultNotificationMessage : AsyncRequestMessage<ContentDialogResult>
+    internal sealed class DialogWithOkCancelButtonNotificationMessage : AsyncRequestMessage<ContentDialogResult>
 
     {
         /// <summary>
@@ -18,7 +18,7 @@ namespace YoursToDo.WinUI.NotificationMessages
         /// Initializes a new instance of the DialogNotificationMessage class.
         /// </summary>
         /// <param name="message"></param>
-        public DialogWithResultNotificationMessage(string message, string title = "Error", string primaryButtonText = "OK", string secondaryButtonText = "Cancel")
+        public DialogWithOkCancelButtonNotificationMessage(string message, string title = "Error", string primaryButtonText = "OK", string secondaryButtonText = "Cancel")
         {
             Message = message;
             Title = title;

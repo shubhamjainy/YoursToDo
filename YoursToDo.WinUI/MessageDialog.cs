@@ -7,7 +7,7 @@ namespace YoursToDo.WinUI
 {
     internal static class MessageDialog
     {
-        internal static async Task ShowAsync(this UIElement element, string message, string title = "Error", string buttonText = "OK")
+        internal static async Task<ContentDialogResult> ShowAsync(this UIElement element, string message, string title = "Error", string buttonText = "OK")
         {
             var dialog = new ContentDialog
             {
@@ -18,7 +18,7 @@ namespace YoursToDo.WinUI
                 DefaultButton = ContentDialogButton.Primary
             };
 
-            await dialog.ShowAsync();
+            return await dialog.ShowAsync();
         }
 
         internal static async Task<ContentDialogResult> ShowWithResultAsync(this UIElement element, string message, string title = "Warning", string primaryButtonText = "OK", string secondaryButtonText = "Cancel")
