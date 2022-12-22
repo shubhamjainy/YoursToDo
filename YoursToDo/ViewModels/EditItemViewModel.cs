@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using System;
 using System.Threading.Tasks;
 using YoursToDo.Common.Enums;
 using YoursToDo.Common.Interface;
@@ -12,19 +13,19 @@ namespace YoursToDo.ViewModels
 {
     internal sealed partial class EditItemViewModel : ObservableObject
     {
-        private readonly IUserService UserService;
-        private readonly IUserManager UserManager;
+        private readonly Lazy<IUserService> UserService;
+        private readonly Lazy<IUserManager> UserManager;
         private User? user;
         private readonly int userId;
         private readonly Item selectedItem;
 
-        public EditItemViewModel(IUserService userService, IUserManager userManager)
+        public EditItemViewModel(Lazy<IUserService> userService, Lazy<IUserManager> userManager)
         {
             UserService = userService;
             UserManager = userManager;
 
-            userId = UserManager.UserId;
-            selectedItem = UserManager.SelectedItem!;
+            userId = UserManager.Value.UserId;
+            selectedItem = UserManager.Value.SelectedItem!;
             UpdatedToDoItem = selectedItem!.Content;
         }
 
@@ -43,7 +44,7 @@ namespace YoursToDo.ViewModels
             user.Items.Remove(clone);
             clone.Content = UpdatedToDoItem;
             user.Items.Add(clone);
-            await UserService.Update(user);
+            await UserService.Value.Update(user);
             WeakReferenceMessenger.Default.Send(new ClosingNotificationMessage(WindowType.EditItem));
         }
 
@@ -60,7 +61,7 @@ namespace YoursToDo.ViewModels
         [RelayCommand]
         private async Task LoadedAsync()
         {
-            user = await UserService.Get(userId);
+            user = await UserService.Value.Get(userId);
         }
     }
 }

@@ -16,26 +16,26 @@ namespace YoursToDo.ViewModels
 {
     internal sealed partial class DashboardViewModel : ObservableObject
     {
-        private readonly IItemService ItemService;
-        private readonly IUserService UserService;
-        private readonly IWindowFactory Factory;
-        private readonly IUserManager UserManager;
+        private readonly Lazy<IItemService> ItemService;
+        private readonly Lazy<IUserService> UserService;
+        private readonly Lazy<IWindowFactory> Factory;
+        private readonly Lazy<IUserManager> UserManager;
         private User? user;
 
-        public DashboardViewModel(IItemService itemService, IWindowFactory factory, IUserService userService, IUserManager userManager)
+        public DashboardViewModel(Lazy<IItemService> itemService, Lazy<IWindowFactory> factory, Lazy<IUserService> userService, Lazy<IUserManager> userManager)
         {
             ItemService = itemService;
             UserService = userService;
             Factory = factory;
             UserManager = userManager;
 
-            Name = UserManager.Name;
-            UserId = UserManager.UserId;
+            Name = UserManager.Value.Name;
+            UserId = UserManager.Value.UserId;
         }
 
         private async Task LoadAllToDoItems()
         {
-            user = await UserService.Get(UserId);
+            user = await UserService.Value.Get(UserId);
             Items = user.Items;
         }
 
@@ -55,7 +55,7 @@ namespace YoursToDo.ViewModels
             };
 
             user.Items.Add(item);
-            var result = await UserService.Update(user);
+            var result = await UserService.Value.Update(user);
 
             if (result is not null)
             {
@@ -67,7 +67,7 @@ namespace YoursToDo.ViewModels
         [RelayCommand]
         private void LogOut()
         {
-            Factory.ShowMainWindow();
+            Factory.Value.ShowMainWindow();
             WeakReferenceMessenger.Default.Send(new ClosingNotificationMessage(WindowType.Dashboard));
         }
 
@@ -82,9 +82,9 @@ namespace YoursToDo.ViewModels
         {
             if (MessageBox.Show(Constant.AreYouSureToUpdateSelectedItem, "Warning", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {
-                UserManager.SetSelectedToDoItem(SelectedToDoItem);
+                UserManager.Value.SetSelectedToDoItem(SelectedToDoItem);
 
-                Factory.ShowEditItemWindow();
+                Factory.Value.ShowEditItemWindow();
             }
         }
 
@@ -93,7 +93,7 @@ namespace YoursToDo.ViewModels
         {
             if (MessageBox.Show(Constant.AreYouSureToDeleteSelectedItem, "Warning", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {
-                await ItemService.Delete(SelectedToDoItem);
+                await ItemService.Value.Delete(SelectedToDoItem);
             }
         }
 

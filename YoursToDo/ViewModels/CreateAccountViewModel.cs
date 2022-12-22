@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,10 +16,10 @@ namespace YoursToDo.ViewModels
 {
     public sealed partial class CreateAccountViewModel : ObservableValidator
     {
-        private readonly IUserService UserService;
-        private readonly IWindowFactory Factory;
+        private readonly Lazy<IUserService> UserService;
+        private readonly Lazy<IWindowFactory> Factory;
 
-        public CreateAccountViewModel(IUserService userService, IWindowFactory factory)
+        public CreateAccountViewModel(Lazy<IUserService> userService, Lazy<IWindowFactory> factory)
         {
             UserService = userService;
             Factory = factory;
@@ -27,7 +28,7 @@ namespace YoursToDo.ViewModels
         [RelayCommand]
         private void Login()
         {
-            Factory.ShowLoginWindow();
+            Factory.Value.ShowLoginWindow();
             WeakReferenceMessenger.Default.Send(new ClosingNotificationMessage(WindowType.CreateAccount));
         }
 
@@ -39,7 +40,7 @@ namespace YoursToDo.ViewModels
         [RelayCommand(CanExecute = nameof(CanLoginExecute))]
         private async Task CreateAccountAsync()
         {
-            var getUser = await UserService.Exists(email);
+            var getUser = await UserService.Value.Exists(email);
 
             if (getUser)
             {
@@ -53,7 +54,7 @@ namespace YoursToDo.ViewModels
                 Password = Password,
                 Name = Name
             };
-            var result = await UserService.Create(user);
+            var result = await UserService.Value.Create(user);
             if (result is not null)
             {
                 MessageBox.Show(Constant.AccountCreationSuccessful);

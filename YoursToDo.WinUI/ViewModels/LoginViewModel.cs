@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using YoursToDo.Common;
@@ -14,11 +15,11 @@ namespace YoursToDo.WinUI.ViewModels
 {
     public sealed partial class LoginViewModel : ObservableValidator
     {
-        private readonly IWindowFactory Factory;
-        private readonly IUserService UserService;
-        private readonly IUserManager UserManager;
+        private readonly Lazy<IWindowFactory> Factory;
+        private readonly Lazy<IUserService> UserService;
+        private readonly Lazy<IUserManager> UserManager;
 
-        public LoginViewModel(IUserService userService, IWindowFactory factory, IUserManager userManager)
+        public LoginViewModel(Lazy<IUserService> userService, Lazy<IWindowFactory> factory, Lazy<IUserManager> userManager)
         {
             UserService = userService;
             Factory = factory;
@@ -28,13 +29,13 @@ namespace YoursToDo.WinUI.ViewModels
         [RelayCommand(CanExecute = nameof(CanLoginExecute))]
         private async Task LoginAsync()
         {
-            var user = await UserService.Get(email);
+            var user = await UserService.Value.Get(email);
 
             if (user is not null && user.Password.Equals(Password))
             {
-                UserManager.SetUserData(user.Name, user.Email, user.Id);
+                UserManager.Value.SetUserData(user.Name, user.Email, user.Id);
 
-                Factory.ShowDashboardWindow();
+                Factory.Value.ShowDashboardWindow();
                 WeakReferenceMessenger.Default.Send(new ClosingNotificationMessage(WindowType.Login));
             }
             else
@@ -68,7 +69,7 @@ namespace YoursToDo.WinUI.ViewModels
         [RelayCommand]
         private void CreateAccount()
         {
-            Factory.ShowCreateAccountWindow();
+            Factory.Value.ShowCreateAccountWindow();
             WeakReferenceMessenger.Default.Send(new ClosingNotificationMessage(WindowType.Login));
         }
 

@@ -4,10 +4,10 @@
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
+using System;
 using YoursToDo.Common.Interface;
 using YoursToDo.Common.Manager;
 using YoursToDo.EFCore;
-using YoursToDo.EFCore.Entity;
 using YoursToDo.EFCore.Interface;
 using YoursToDo.EFCore.Service;
 using YoursToDo.WinUI.Helper;
@@ -40,6 +40,10 @@ namespace YoursToDo.WinUI
                .AddSingleton<IItemService, ItemService>()
                .AddSingleton<IWindowFactory, WindowFactory>()
                .AddSingleton<IUserManager, UserManager>()
+               .AddTransient<Lazy<IWindowFactory>>(provider => new Lazy<IWindowFactory>(provider.GetService<IWindowFactory>))
+               .AddTransient<Lazy<IUserService>>(provider => new Lazy<IUserService>(provider.GetService<IUserService>))
+               .AddTransient<Lazy<IItemService>>(provider => new Lazy<IItemService>(provider.GetService<IItemService>))
+               .AddTransient<Lazy<IUserManager>>(provider => new Lazy<IUserManager>(provider.GetService<IUserManager>))
                .AddTransient<MainWindowViewModel>()
                .AddTransient<LoginViewModel>()
                .AddTransient<CreateAccountViewModel>()

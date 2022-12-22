@@ -13,9 +13,9 @@ namespace YoursToDo.WinUI.ViewModels
     public sealed partial class MainWindowViewModel : ObservableObject
     {
         private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
-        private readonly IWindowFactory Factory;
+        private readonly Lazy<IWindowFactory> Factory;
         
-        public MainWindowViewModel(IWindowFactory factory)
+        public MainWindowViewModel(Lazy<IWindowFactory> factory)
         {
             Factory = factory;
             Init();
@@ -39,14 +39,14 @@ namespace YoursToDo.WinUI.ViewModels
         [RelayCommand]
         private void Login()
         {
-            Factory.ShowLoginWindow();
+            Factory.Value.ShowLoginWindow();
             WeakReferenceMessenger.Default.Send(new ClosingNotificationMessage(WindowType.Main));
         }
 
         [RelayCommand]
         private void CreateAccount()
         {
-            Factory.ShowCreateAccountWindow();
+            Factory.Value.ShowCreateAccountWindow();
             WeakReferenceMessenger.Default.Send(new ClosingNotificationMessage(WindowType.Main));
         }
 

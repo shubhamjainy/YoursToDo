@@ -17,10 +17,10 @@ namespace YoursToDo.WinUI.ViewModels
 {
     public sealed partial class CreateAccountViewModel : ObservableValidator
     {
-        private readonly IWindowFactory Factory;
-        private readonly IUserService UserService;
+        private readonly Lazy<IWindowFactory> Factory;
+        private readonly Lazy<IUserService> UserService;
 
-        public CreateAccountViewModel(IUserService userService, IWindowFactory factory)
+        public CreateAccountViewModel(Lazy<IUserService> userService, Lazy<IWindowFactory> factory)
         {
             UserService = userService;
             Factory = factory;
@@ -29,7 +29,7 @@ namespace YoursToDo.WinUI.ViewModels
         [RelayCommand]
         private void Login()
         {
-            Factory.ShowLoginWindow();
+            Factory.Value.ShowLoginWindow();
             WeakReferenceMessenger.Default.Send(new ClosingNotificationMessage(WindowType.CreateAccount));
         }
 
@@ -58,7 +58,7 @@ namespace YoursToDo.WinUI.ViewModels
         [RelayCommand(CanExecute = nameof(CanLoginExecute))]
         private async Task CreateAccountAsync()
         {
-            var getUser = await UserService.Exists(email);
+            var getUser = await UserService.Value.Exists(email);
 
             if (getUser)
             {
@@ -73,7 +73,7 @@ namespace YoursToDo.WinUI.ViewModels
                 Password = Password,
                 Name = Name
             };
-            var result = await UserService.Create(user);
+            var result = await UserService.Value.Create(user);
             if (result is not null)
             {
                 var dialogResult = await WeakReferenceMessenger.Default.Send(new DialogWithOkButtonNotificationMessage(Constant.AccountCreationSuccessful, "Success"));
