@@ -1,11 +1,7 @@
 ﻿namespace YoursToDo.Common.Interface
 {
-    public interface IWindowFactory
+    public interface IWindowFactory: IWindowFactoryBase
     {
-        void ShowDashboardWindow();
-        void ShowMainWindow();
-        void ShowLoginWindow();
-        void ShowCreateAccountWindow();
         bool? ShowEditItemWindow();
     }
 }

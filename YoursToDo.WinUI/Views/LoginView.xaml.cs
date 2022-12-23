@@ -36,7 +36,7 @@ namespace YoursToDo.WinUI.Views
                 }
             });
 
-            WeakReferenceMessenger.Default.Register<DialogWithOkButtonNotificationMessage>(this, async (recipient, message) =>
+            WeakReferenceMessenger.Default.Register<DialogWithOkButtonNotificationMessage>(this, (recipient, message) =>
             {
                 var result = MessageDialog.ShowAsync(this.Content, message.Message, message.Title, message.ButtonText);
                 message.Reply(result);

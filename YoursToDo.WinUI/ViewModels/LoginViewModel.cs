@@ -15,11 +15,11 @@ namespace YoursToDo.WinUI.ViewModels
 {
     public sealed partial class LoginViewModel : ObservableValidator
     {
-        private readonly Lazy<IWindowFactory> Factory;
+        private readonly Lazy<IWindowFactoryBase> Factory;
         private readonly Lazy<IUserService> UserService;
         private readonly Lazy<IUserManager> UserManager;
 
-        public LoginViewModel(Lazy<IUserService> userService, Lazy<IWindowFactory> factory, Lazy<IUserManager> userManager)
+        public LoginViewModel(Lazy<IUserService> userService, Lazy<IWindowFactoryBase> factory, Lazy<IUserManager> userManager)
         {
             UserService = userService;
             Factory = factory;

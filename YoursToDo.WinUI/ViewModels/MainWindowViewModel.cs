@@ -13,9 +13,9 @@ namespace YoursToDo.WinUI.ViewModels
     public sealed partial class MainWindowViewModel : ObservableObject
     {
         private readonly DispatcherQueue _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
-        private readonly Lazy<IWindowFactory> Factory;
+        private readonly Lazy<IWindowFactoryBase> Factory;
         
-        public MainWindowViewModel(Lazy<IWindowFactory> factory)
+        public MainWindowViewModel(Lazy<IWindowFactoryBase> factory)
         {
             Factory = factory;
             Init();

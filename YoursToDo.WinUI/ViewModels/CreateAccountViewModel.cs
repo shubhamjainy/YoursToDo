@@ -17,10 +17,10 @@ namespace YoursToDo.WinUI.ViewModels
 {
     public sealed partial class CreateAccountViewModel : ObservableValidator
     {
-        private readonly Lazy<IWindowFactory> Factory;
+        private readonly Lazy<IWindowFactoryBase> Factory;
         private readonly Lazy<IUserService> UserService;
 
-        public CreateAccountViewModel(Lazy<IUserService> userService, Lazy<IWindowFactory> factory)
+        public CreateAccountViewModel(Lazy<IUserService> userService, Lazy<IWindowFactoryBase> factory)
         {
             UserService = userService;
             Factory = factory;

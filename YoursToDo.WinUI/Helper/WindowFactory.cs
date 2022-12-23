@@ -5,7 +5,7 @@ using YoursToDo.WinUI.Views;
 
 namespace YoursToDo.WinUI.Helper
 {
-    internal sealed class WindowFactory : IWindowFactory
+    internal sealed class WindowFactory : IWindowFactoryBase
     {
         public void ShowCreateAccountWindow() => CreateWindow(new CreateAccountView());
 
@@ -13,7 +13,6 @@ namespace YoursToDo.WinUI.Helper
 
         public void ShowMainWindow() => CreateWindow(new MainWindow());
         public void ShowDashboardWindow() => CreateWindow(new DashboardView());
-        public bool? ShowEditItemWindow() => throw new System.NotImplementedException();
         public static void CreateWindow(Window window)
         {
             window.SetIsMaximizable(Constants.IsMaximizable);

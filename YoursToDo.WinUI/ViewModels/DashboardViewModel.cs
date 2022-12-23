@@ -19,11 +19,11 @@ namespace YoursToDo.WinUI.ViewModels
     {
         private readonly Lazy<IItemService> ItemService;
         private readonly Lazy<IUserService> UserService;
-        private readonly Lazy<IWindowFactory> Factory;
+        private readonly Lazy<IWindowFactoryBase> Factory;
         private readonly Lazy<IUserManager> UserManager;
         private User user;
 
-        public DashboardViewModel(Lazy<IItemService> itemService, Lazy<IWindowFactory> factory, Lazy<IUserService> userService, Lazy<IUserManager> userManager)
+        public DashboardViewModel(Lazy<IItemService> itemService, Lazy<IWindowFactoryBase> factory, Lazy<IUserService> userService, Lazy<IUserManager> userManager)
         {
             ItemService = itemService;
             UserService = userService;
