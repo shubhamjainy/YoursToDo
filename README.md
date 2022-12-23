@@ -2,7 +2,7 @@
 Simple WPF and WinUI application with CommunityToolkit.Mvvm.
 This is a simple project to manage ToDo items list created in WPF and latest WinUI 3.
 
-if you are looking to work on WinUI 3. If you are looking to migrate the existing WPF app into WinUI 3. I believe This sample will help you figure out the
+If you are looking to work on WinUI 3. If you are looking to migrate the existing WPF app into WinUI 3. I believe This sample will help you figure out the
 differences between WPF and WinUI including code changes and UI prespective.
 
 Thsi sample has below things:
